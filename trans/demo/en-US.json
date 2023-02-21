@@ -1,0 +1,14 @@
+{
+  "trans0001": "Select",
+  "trans0002": "Save",
+  "trans0003": "Password may only contain %d-%d digits, letters or special characters, or any combination of these.",
+  "trans0004": "Required",
+  "trans0005": "Username is too long",
+  "trans0007": "Please enter",
+  "trans0008": "All rights reserved.",
+  "trans0009": "FHTEK Info Technologies Co.,Ltd.",
+  "trans0010": "Webpage locked,please login after %d s",
+  "trans0011": "You already login incorrectly for %d time",
+  "trans0012": "Admistrator account is login",
+  "trans0013": "User account is already login"
+}
