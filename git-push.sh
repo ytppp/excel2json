@@ -5,5 +5,5 @@ remotes=$(git remote)
 
 # 遍历每个远程仓库并推送代码
 for remote in $remotes; do
-    git push $remote main
+  git push $remote main
 done
