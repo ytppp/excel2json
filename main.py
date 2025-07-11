@@ -16,6 +16,7 @@ def app_path():
 def excel2json(path, excel_file):
     wb = load_workbook(excel_file)  # 加载excel表格
     filename = os.path.splitext(os.path.basename(excel_file))[0]
+    print(filename)
     worksheets_len = len(wb.worksheets)
     for sheet in wb.worksheets:  # wb.worksheets: 获取所有工作表对象
         result = {}
@@ -33,9 +34,19 @@ def excel2json(path, excel_file):
             if row > 0:
                 for lang in lang_list:
                     key = sheet.cell(row + 1, 1).value
-                    if key:
-                        val = sheet.cell(row + 1, lang_list.index(lang) + 2).value
-                        result[lang][key] = val or key
+                    if filename == TIMEZONE:
+                        for column in range(sheet.max_column):
+                            if column == 0:
+                                result[lang][key] = {}
+                            if column > 0 and sheet.cell(row + 1, column + 1).value:
+                                columnTitle = sheet.cell(1, column + 1).value
+                                val = sheet.cell(row + 1, column + 1).value
+                                result[lang][key][columnTitle] = val
+                    else:
+                        if key:
+                            val = sheet.cell(row + 1, lang_list.index(lang) + 2).value
+                            result[lang][key] = val or key
+        print(result)
         save_json_file(path, filename, worksheets_len, sheet.title, lang_list, result)
     wb.close()
 
