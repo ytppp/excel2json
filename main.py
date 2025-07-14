@@ -21,8 +21,11 @@ def excel2json(path, excel_file):
     for sheet in wb.worksheets:  # wb.worksheets: 获取所有工作表对象
         result = {}
         lang_list = []
+
         # 生成语种列表
         for column in range(sheet.max_column):
+            if column > 1 and filename == TIMEZONE:
+                break
             # 排除 key
             if column > 0 and sheet.cell(1, column + 1).value:
                 lang = sheet.cell(1, column + 1).value
